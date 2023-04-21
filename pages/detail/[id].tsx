@@ -219,39 +219,49 @@ const DetailPage = () => {
                   <div className="absolute top-4 md:top-8 -left-56 md:-left-24 w-56 h-56">
                     <div data-cy="sort-parent" className="w-full h-full flex flex-col items-stretch justify-between rounded-lg divide-y border bg-white">
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('latest')}>
-                        <span className="text-sky-500">
-                          <FilterLatestIcon />
-                        </span>
-                        <span data-cy="sort-selection-title">Terbaru</span>
-                        {showFilter.filterType == 'latest' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        <div data-cy={showFilter.filterType == 'latest' ? 'sort-selection-selected' : null}>
+                          <span data-cy="sort-selection-icon" className="text-sky-500">
+                            <FilterLatestIcon />
+                          </span>
+                          <span data-cy="sort-selection-title">Terbaru</span>
+                          {showFilter.filterType == 'latest' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('oldest')}>
-                        <span className="text-sky-500">
-                          <FilterOldestIcon />
-                        </span>
-                        <span data-cy="sort-selection-title">Terlama</span>
-                        {showFilter.filterType == 'oldest' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        <div data-cy={showFilter.filterType == 'oldest' ? 'sort-selection-selected' : null}>
+                          <span data-cy="sort-selection-icon" className="text-sky-500">
+                            <FilterOldestIcon />
+                          </span>
+                          <span data-cy="sort-selection-title">Terlama</span>
+                          {showFilter.filterType == 'oldest' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('a-z')}>
-                        <span className="text-sky-500">
-                          <FilterAZIcon />
-                        </span>
-                        <span data-cy="sort-selection-title">A-Z</span>
-                        {showFilter.filterType == 'a-z' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        <div data-cy={showFilter.filterType == 'a-z' ? 'sort-selection-selected' : null}>
+                          <span data-cy="sort-selection-icon" className="text-sky-500">
+                            <FilterAZIcon />
+                          </span>
+                          <span data-cy="sort-selection-title">A-Z</span>
+                          {showFilter.filterType == 'a-z' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('z-a')}>
-                        <span className="text-sky-500">
-                          <FilterZAIcon />
-                        </span>
-                        <span data-cy="sort-selection-title">Z-A</span>
-                        {showFilter.filterType == 'z-a' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        <div data-cy={showFilter.filterType == 'z-a' ? 'sort-selection-selected' : null}>
+                          <span data-cy="sort-selection-icon" className="text-sky-500">
+                            <FilterZAIcon />
+                          </span>
+                          <span data-cy="sort-selection-title">Z-A</span>
+                          {showFilter.filterType == 'z-a' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('not-complete')}>
-                        <span className="text-sky-500">
-                          <FilterIcon />
-                        </span>
-                        <span data-cy="sort-selection-title">Belum Selesai</span>
-                        {showFilter.filterType == 'not-complete' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        <div data-cy={showFilter.filterType == 'not-complete' ? 'sort-selection-selected' : null}>
+                          <span data-cy="sort-selection-icon" className="text-sky-500">
+                            <FilterIcon />
+                          </span>
+                          <span data-cy="sort-selection-title">Belum Selesai</span>
+                          {showFilter.filterType == 'not-complete' ? <AiOutlineCheck className="absolute right-4 h-4 w-4 md:w-6 md:h-6" /> : null}
+                        </div>
                       </button>
                     </div>
                   </div>

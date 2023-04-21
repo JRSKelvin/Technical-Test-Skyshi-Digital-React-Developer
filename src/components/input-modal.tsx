@@ -93,7 +93,7 @@ export const InputModalAddComponent = ({ openVisible, title, priority, handleCli
                 </div>
                 <div className="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 disabled:bg-opacity-20">
                   <div data-te-modal-dismiss="true">
-                    <button data-cy="modal-add-save-button" type="button" className="flex items-center bg-sky-500 text-xs md:text-lg font-semibold rounded-full px-[15px] md:px-7 py-2 md:py-3 disabled:bg-opacity-20 bg-skyBlue text-white" onClick={submitButton}>
+                    <button data-cy="modal-add-save-button" type="button" className="flex items-center bg-sky-500 text-xs md:text-lg font-semibold rounded-full px-[15px] md:px-7 py-2 md:py-3 disabled:bg-opacity-20 bg-skyBlue text-white" disabled={titleInput && priorityInput.value ? false : true} onClick={submitButton}>
                       Simpan
                     </button>
                   </div>
