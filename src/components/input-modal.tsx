@@ -45,7 +45,7 @@ export const InputModalAddComponent = ({ openVisible, title, priority, handleCli
                     <label data-cy="modal-add-name-title" className="text-dark font-semibold text-xs">
                       Name List Item
                     </label>
-                    <input data-cy="modal-add-name-input" type="text" name="name" id="" placeholder="Tambahkan nama list item" className="placeholder:text-[#A4A4A4] text-dark py-[14px] px-[18px] text-sm md:text-base outline-none border border-[#e5e5e5] rounded-md focus:ring ring-sky-200" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
+                    <input data-cy="modal-add-name-input" type="text" name="name" id="" placeholder="Tambahkan nama list item" className="placeholder:text-[#A4A4A4] text-dark py-[14px] px-[18px] text-sm md:text-base outline-none border border-[#e5e5e5] rounded-md focus:ring ring-sky-200" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} required />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label data-cy="modal-add-priority-title" className="text-dark font-semibold text-xs">
@@ -171,7 +171,7 @@ export const InputModalEditComponent = ({ openVisible, id, title, priority, hand
                     <label data-cy="modal-add-name-title" className="text-dark font-semibold text-xs">
                       Name List Item
                     </label>
-                    <input data-cy="modal-add-name-input" type="text" name="name" id="" placeholder="Tambahkan nama list item" className="placeholder:text-[#A4A4A4] text-dark py-[14px] px-[18px] text-sm md:text-base outline-none border border-[#e5e5e5] rounded-md focus:ring ring-sky-200" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
+                    <input data-cy="modal-add-name-input" type="text" name="name" id="" placeholder="Tambahkan nama list item" className="placeholder:text-[#A4A4A4] text-dark py-[14px] px-[18px] text-sm md:text-base outline-none border border-[#e5e5e5] rounded-md focus:ring ring-sky-200" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} required />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label data-cy="modal-add-priority-title" className="text-dark font-semibold text-xs">
