@@ -13,7 +13,7 @@ const ConfirmModalComponent = ({ openVisible, description, highlightDescription,
     <React.Fragment>
       {openVisible ? (
         <React.Fragment>
-          <div data-te-modal-init="true" className="fixed top-0 left-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-slate-900 bg-opacity-50 transition-opacity" id="modalDelete"></div>
+          <div data-te-modal-init="true" className="fixed top-0 left-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-slate-900 bg-opacity-50 transition-opacity" id="modalDelete" onClick={handleClickNo}></div>
           <div data-cy="modal-delete" className="pointer-events-none w-auto opacity-100 transition-all duration-300 ease-in-out mx-auto max-w-[320px] md:max-w-[490px] fixed z-[1056] inset-x-0 top-1/2 -translate-y-1/2">
             <div className="sm:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-xl border-none bg-white bg-clip-padding text-current shadow-lg outline-none">
               <div className="relative flex-auto flex flex-col gap-[26px] p-5 md:p-10">
