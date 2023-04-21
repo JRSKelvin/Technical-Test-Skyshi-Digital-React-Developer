@@ -178,6 +178,7 @@ const DetailPage = () => {
         }}
         handleClickYes={(id, title, priority) => {
           handleApiCreateData(title, priority)
+          setShowAdd({ id: 0, view: false, title: '', priority: '' })
         }}
       />
       <InputModalEditComponent
@@ -190,6 +191,7 @@ const DetailPage = () => {
         }}
         handleClickYes={(id, title, priority) => {
           handleApiEditData(id, title, priority)
+          setShowEdit({ id: 0, view: false, title: '', priority: '' })
         }}
       />
       <NavbarComponent />
