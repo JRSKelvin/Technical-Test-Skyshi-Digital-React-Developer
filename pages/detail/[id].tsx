@@ -211,7 +211,7 @@ const DetailPage = () => {
           </div>
           <div className="flex items-center">
             <div className="relative mr-4">
-              <span onClick={() => setShowFilter((oldValue) => ({ ...oldValue, view: !oldValue.view }))}>
+              <span data-cy="todo-sort-button" onClick={() => setShowFilter((oldValue) => ({ ...oldValue, view: !oldValue.view }))}>
                 <FilterRoundIcon />
               </span>
               {showFilter.view ? (
@@ -258,11 +258,11 @@ const DetailPage = () => {
                 </div>
               ) : null}
             </div>
-            <div data-cy="todo-add-button" className="inline-flex items-center justify-center rounded-full  bg-sky-500 px-4 py-2 text-white h-[54px] w-[159px]">
+            <div data-cy="todo-add-button" className="inline-flex items-center justify-center rounded-full  bg-sky-500 px-4 py-2 text-white h-[54px] w-[159px]" onClick={() => handleViewAdd()}>
               <div data-cy="tabler:plus" className="cursor-pointer">
                 <AiOutlinePlus />
               </div>
-              <button className="text-lg text-white fontpoppins font-semibold leading-7 " type="submit" onClick={() => handleViewAdd()}>
+              <button className="text-lg text-white fontpoppins font-semibold leading-7 " type="submit">
                 Tambah
               </button>
             </div>
