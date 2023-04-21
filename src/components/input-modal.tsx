@@ -13,7 +13,7 @@ type ComponentProps = {
 
 export const InputModalAddComponent = ({ openVisible, title, priority, handleClickYes, handleClickNo }: ComponentProps) => {
   const [titleInput, setTitleInput] = React.useState(title)
-  const [priorityInput, setPriorityInput] = React.useState({ view: 'Pilih Priority', value: priority })
+  const [priorityInput, setPriorityInput] = React.useState({ view: 'Very High', value: 'very-high' })
   const [showDropdownPriority, setShowDropdownPriority] = React.useState(false)
 
   React.useEffect(() => {
