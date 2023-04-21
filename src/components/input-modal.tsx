@@ -21,10 +21,12 @@ export const InputModalAddComponent = ({ openVisible, title, priority, handleCli
   }, [priorityInput])
 
   const submitButton = () => {
+    setTitleInput('')
     handleClickYes(0, titleInput, priorityInput.value)
   }
 
   const closeButton = () => {
+    setTitleInput('')
     handleClickNo(0, titleInput, priorityInput.value)
   }
 
