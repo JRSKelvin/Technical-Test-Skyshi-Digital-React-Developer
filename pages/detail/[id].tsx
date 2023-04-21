@@ -8,6 +8,7 @@ import ConfirmModalComponent from '@/src/components/confirm-modal'
 import { FilterAZIcon, FilterIcon, FilterLatestIcon, FilterOldestIcon, FilterRoundIcon, FilterZAIcon } from '@/src/components/custom-icon'
 import { InputModalAddComponent, InputModalEditComponent } from '@/src/components/input-modal'
 import NavbarComponent from '@/src/components/navbar'
+import AlertComponent from '@/src/components/alert'
 
 const DetailPage = () => {
   const [toDoData, setToDoData] = React.useState<any[]>([])
@@ -15,6 +16,7 @@ const DetailPage = () => {
   const [showAdd, setShowAdd] = React.useState({ id: 0, view: false, title: '', priority: '' })
   const [showEdit, setShowEdit] = React.useState({ id: 0, view: false, title: '', priority: '' })
   const [showDelete, setShowDelete] = React.useState({ id: 0, view: false, title: '', priority: '' })
+  const [showAlert, setShowAlert] = React.useState({ view: false, description: '' })
   const [showEditTitle, setShowEditTitle] = React.useState({ id: 0, view: false, title: '' })
   const [editTitle, setEditTitle] = React.useState('')
   const router = useRouter()
@@ -62,6 +64,7 @@ const DetailPage = () => {
     axios.delete(`${baseURL}/todo-items/${detailId}`).then(() => {
       hideConfirmDelete()
       handleApiGetData()
+      setShowAlert({ view: true, description: 'To Do Berhasil Dihapus' })
     })
   }
 
@@ -167,6 +170,7 @@ const DetailPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <AlertComponent openVisible={showAlert.view} description={showAlert.description} />
       <ConfirmModalComponent openVisible={showDelete.view} description={'Apakah Anda Yakin Menghapus To Do'} highlightDescription={showDelete.title} handleClickNo={() => hideConfirmDelete()} handleClickYes={() => handleApiDeleteData(showDelete.id)} />
       <InputModalAddComponent
         id={''}
