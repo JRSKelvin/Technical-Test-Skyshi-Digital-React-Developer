@@ -21,3 +21,15 @@
   padding: 0;
   margin: 0;
 }
+
+@layer base {
+  h2 {
+    @apply text-xl font-bold md:text-3xl text-neutral-700;
+  }
+}
+
+@layer utilities {
+  .layout {
+    @apply w-11/12 max-w-5xl mx-auto;
+  }
+}
