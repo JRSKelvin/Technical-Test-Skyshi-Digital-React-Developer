@@ -211,15 +211,17 @@ const DetailPage = () => {
           </div>
           <div className="flex items-center">
             <div className="relative mr-4">
-              <span data-cy="todo-sort-button" onClick={() => setShowFilter((oldValue) => ({ ...oldValue, view: !oldValue.view }))}>
-                <FilterRoundIcon />
-              </span>
+              <div>
+                <span data-cy="todo-sort-button" onClick={() => setShowFilter((oldValue) => ({ ...oldValue, view: !oldValue.view }))}>
+                  <FilterRoundIcon />
+                </span>
+              </div>
               {showFilter.view ? (
                 <div className="relative">
                   <div className="absolute top-4 md:top-8 -left-56 md:-left-24 w-56 h-56">
                     <div data-cy="sort-parent" className="w-full h-full flex flex-col items-stretch justify-between rounded-lg divide-y border bg-white">
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('latest')}>
-                        <div data-cy={showFilter.filterType == 'latest' ? 'sort-selection-selected' : null}>
+                        <div data-cy={showFilter.filterType == 'latest' ? 'sort-selection-selected' : null} className="relative flex items-center space-x-2 lg:space-x-4">
                           <span data-cy="sort-selection-icon" className="text-sky-500">
                             <FilterLatestIcon />
                           </span>
@@ -228,7 +230,7 @@ const DetailPage = () => {
                         </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('oldest')}>
-                        <div data-cy={showFilter.filterType == 'oldest' ? 'sort-selection-selected' : null}>
+                        <div data-cy={showFilter.filterType == 'oldest' ? 'sort-selection-selected' : null} className="relative flex items-center space-x-2 lg:space-x-4">
                           <span data-cy="sort-selection-icon" className="text-sky-500">
                             <FilterOldestIcon />
                           </span>
@@ -237,7 +239,7 @@ const DetailPage = () => {
                         </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('a-z')}>
-                        <div data-cy={showFilter.filterType == 'a-z' ? 'sort-selection-selected' : null}>
+                        <div data-cy={showFilter.filterType == 'a-z' ? 'sort-selection-selected' : null} className="relative flex items-center space-x-2 lg:space-x-4">
                           <span data-cy="sort-selection-icon" className="text-sky-500">
                             <FilterAZIcon />
                           </span>
@@ -246,7 +248,7 @@ const DetailPage = () => {
                         </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('z-a')}>
-                        <div data-cy={showFilter.filterType == 'z-a' ? 'sort-selection-selected' : null}>
+                        <div data-cy={showFilter.filterType == 'z-a' ? 'sort-selection-selected' : null} className="relative flex items-center space-x-2 lg:space-x-4">
                           <span data-cy="sort-selection-icon" className="text-sky-500">
                             <FilterZAIcon />
                           </span>
@@ -255,7 +257,7 @@ const DetailPage = () => {
                         </div>
                       </button>
                       <button data-cy="sort-selection" className="relative flex items-center w-full h-full p-2 px-4 lg:px-6 space-x-2 lg:space-x-4 hover:bg-gray-100" onClick={() => handleFilter('not-complete')}>
-                        <div data-cy={showFilter.filterType == 'not-complete' ? 'sort-selection-selected' : null}>
+                        <div data-cy={showFilter.filterType == 'not-complete' ? 'sort-selection-selected' : null} className="relative flex items-center space-x-2 lg:space-x-4">
                           <span data-cy="sort-selection-icon" className="text-sky-500">
                             <FilterIcon />
                           </span>
