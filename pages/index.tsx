@@ -93,7 +93,7 @@ const HomeIndex = () => {
                     <p data-cy="activity-item-date" className="text-sm font-medium text-[#888888]">
                       {data.created_at}
                     </p>
-                    <div className="cursor-pointer" onClick={() => showConfirmDelete(data.id, data.title)}>
+                    <div data-cy="activity-item-delete-button" className="cursor-pointer" onClick={() => showConfirmDelete(data.id, data.title)}>
                       <AiOutlineDelete />
                     </div>
                   </div>
