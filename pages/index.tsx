@@ -1,7 +1,57 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import axios from 'axios'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai'
+import AlertComponent from '@/src/components/alert'
+import ConfirmModalComponent from '@/src/components/confirm-modal'
+import NavbarComponent from '@/src/components/navbar'
 
 const HomeIndex = () => {
+  const [activityData, setActivityData] = React.useState<any[]>([])
+  const [showDelete, setShowDelete] = React.useState({ id: 0, view: false, highlight: '' })
+  const [showAlert, setShowAlert] = React.useState({ view: false, description: '' })
+  const router = useRouter()
+  const baseURL = 'https://todo.api.devcode.gethired.id'
+
+  React.useEffect(() => {
+    handleApiGetData()
+  }, [])
+
+  const handleApiGetData = () => {
+    axios.get(`${baseURL}/activity-groups`).then((res) => {
+      setActivityData(res.data.data)
+    })
+  }
+
+  const handleApiCreateData = () => {
+    const postData = { title: 'New Activity', email: 'ivan@skyshi.com' }
+    axios.post(`${baseURL}/activity-groups`, postData).then(() => {
+      handleApiGetData()
+    })
+  }
+
+  const handleApiDeleteData = (detailId: number) => {
+    axios.delete(`${baseURL}/activity-groups/${detailId}`).then(() => {
+      hideConfirmDelete()
+      handleApiGetData()
+      setShowAlert({ view: true, description: 'Activity Berhasil Dihapus' })
+    })
+  }
+
+  const handleRedirectToDetail = (detailId: number) => {
+    router.push(`/detail/${detailId}`)
+  }
+
+  const showConfirmDelete = (detailId: number, highlight: string) => {
+    setShowDelete({ id: detailId, view: true, highlight: highlight })
+  }
+
+  const hideConfirmDelete = () => {
+    setShowDelete({ id: 0, view: false, highlight: '' })
+  }
+
   return (
     <React.Fragment>
       <Head>
@@ -10,6 +60,56 @@ const HomeIndex = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <AlertComponent openVisible={showAlert.view} description={showAlert.description} />
+      <ConfirmModalComponent openVisible={showDelete.view} description={'Apakah Anda Yakin Menghapus Activity'} highlightDescription={showDelete.highlight} handleClickNo={() => hideConfirmDelete()} handleClickYes={() => handleApiDeleteData(showDelete.id)} />
+      <NavbarComponent />
+      <div className="layout">
+        <div className="flex items-center justify-between my-10">
+          <div className="flex items-center space-x-2 md:space-x-3">
+            <h2 data-cy="activity-title">Activity</h2>
+          </div>
+          <div data-cy="activity-add-button" className="inline-flex items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-white h-[54px] w-[159px]">
+            <div data-cy="tabler:plus" className="cursor-pointer">
+              <AiOutlinePlus />
+            </div>
+            <button className="text-lg text-white fontpoppins font-semibold leading-7" type="submit" onClick={handleApiCreateData}>
+              Tambah
+            </button>
+          </div>
+        </div>
+        <main className="pb-10">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {activityData.map((data, index) => {
+              return (
+                <div data-cy="activity-item" className="relative bg-white shadow-lg w-full rounded-2xl p-4 cursor-pointer hover:-translate-y-3 hover:duration-500" key={index}>
+                  <div onClick={() => handleRedirectToDetail(data.id)}>
+                    <div className="min-h-[160px]">
+                      <h3 data-cy="activity-item-title" className="text-lg font-bold leading-7">
+                        {data.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center mt-3 ">
+                    <p data-cy="activity-item-date" className="text-sm font-medium text-[#888888]">
+                      {data.created_at}
+                    </p>
+                    <div className="cursor-pointer" onClick={() => showConfirmDelete(data.id, data.title)}>
+                      <AiOutlineDelete />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          {activityData.length == 0 ? (
+            <main className="pb-10">
+              <figure className="w-1/2 mx-auto cursor-pointer">
+                <img data-cy="activity-empty-state" className="w-full object-contain aspect-square" alt="Activity" src="/assets/no-activity.webp" />
+              </figure>
+            </main>
+          ) : null}
+        </main>
+      </div>
     </React.Fragment>
   )
 }
